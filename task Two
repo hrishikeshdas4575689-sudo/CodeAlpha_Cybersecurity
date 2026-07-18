@@ -1,0 +1,24 @@
+import os
+
+username = input("Enter username: ")
+password = input("Enter password: ")
+
+# Hardcoded credentials (Vulnerability)
+if username == "admin" and password == "admin123":
+    print("Login Successful")
+else:
+    print("Login Failed")
+
+filename = input("Enter filename to read: ")
+
+# Arbitrary file access (Vulnerability)
+file = open(filename, "r")
+print(file.read())
+file.close()
+
+command = input("Enter system command: ")
+
+# Command Injection (Vulnerability)
+os.system(command)
+
+print("Program Finished")
